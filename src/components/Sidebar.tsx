@@ -15,7 +15,7 @@ export function Sidebar() {
         <img
           className={styles.avatar}
           src="https://github.com/beatrizmf.png"
-          alt="avatar"
+          alt="your avatar"
         />
 
         <strong>Beatriz Felix</strong>
