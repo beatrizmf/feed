@@ -10,9 +10,9 @@ const posts = [
   {
     id: 1,
     author: {
-      avatarUrl: 'https://github.com/diego3g.png',
-      name: 'Diego Fernandes',
-      role: 'CTO @Rocketseat'
+      avatarUrl: 'https://github.com/beatrizmf.png',
+      name: 'Beatriz Felix',
+      role: 'Software Engineer'
     },
     content: [
       { type: 'paragraph', content: 'Fala galera 👋' },
@@ -26,7 +26,7 @@ const posts = [
     author: {
       avatarUrl: 'https://github.com/maykbrito.png',
       name: 'Mayk Brito',
-      role: 'Educator @Rocketseat'
+      role: 'Educator'
     },
     content: [
       { type: 'paragraph', content: 'Fala galera 👋' },
@@ -52,6 +52,7 @@ function App() {
               author={post.author}
               content={post.content}
               publishedAt={post.publishedAt}
+              comments={['great!', 'nice', 'awesome']}
             />)
           )}
         </main>

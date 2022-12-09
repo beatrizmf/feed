@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
@@ -5,6 +6,7 @@ import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 
 import styles from './Post.module.css'
+import { CommentForm } from './CommentForm';
 
 interface PostProps {
   content: { type: string; content: string; }[]
@@ -14,9 +16,12 @@ interface PostProps {
     role: string
   };
   publishedAt: Date;
+  comments: string[]
 }
 
-export function Post({ content, author, publishedAt }: PostProps) {
+export function Post({ content, author, comments, publishedAt }: PostProps) {
+  const [localComments, setLocalComments] = useState(comments)
+
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
   });
@@ -57,20 +62,17 @@ export function Post({ content, author, publishedAt }: PostProps) {
         })}
       </div>
 
-      <form className={styles.commentForm}>
-        <strong>Leave your feedback</strong>
-
-        <textarea placeholder="Leave a reply" />
-
-        <footer>
-          <button type="submit">Publish</button>
-        </footer>
-      </form>
+      <CommentForm onCommentCreate={(comment) => { setLocalComments(existents => [...existents, comment]) }} />
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
-        <Comment />
+        {localComments.map(comment =>
+          <Comment
+            content={comment}
+            publishedAt={new Date()}
+            kudosCount={13}
+            author={author}
+          />
+        )}
       </div>
     </article>
   )
