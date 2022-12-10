@@ -10,7 +10,12 @@ export function CommentForm({ onCreateComment }: CommentFormProps) {
   const [newCommentText, setNewCommentText] = useState('');
 
   function handleNewCommentChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    e.target.setCustomValidity('');
     setNewCommentText(e.target.value);
+  }
+
+  function handleNewCommentInvalid(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    e.target.setCustomValidity('Enter your reply');
   }
 
   function handleCrateNewComment(e: React.FormEvent<HTMLFormElement>) {
@@ -19,19 +24,23 @@ export function CommentForm({ onCreateComment }: CommentFormProps) {
     setNewCommentText('');
   }
 
+  const isNewCommentEmpty = newCommentText.length === 0;
+
   return (
     <form onSubmit={handleCrateNewComment} className={styles.commentForm}>
       <strong>Leave your feedback</strong>
 
       <textarea
+        required
         name="comment"
+        placeholder="Leave a reply"
         value={newCommentText}
         onChange={handleNewCommentChange}
-        placeholder="Leave a reply"
+        onInvalid={handleNewCommentInvalid}
       />
 
       <footer>
-        <button type="submit">Publish</button>
+        <button disabled={isNewCommentEmpty} type="submit">Publish</button>
       </footer>
     </form>
   )
