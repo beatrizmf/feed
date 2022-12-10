@@ -62,9 +62,12 @@ export function Comment({
         </div>
 
         <footer>
-          <button onClick={handleLikeComment} className={styles.likeButton}>
+          <button
+            onClick={handleLikeComment}
+            className={styles.likeButton}
+          >
             <ThumbsUp />
-            Likes <span>{likesCount}</span>
+            Like <span>{localLikesCount}</span>
           </button>
         </footer>
       </div>
