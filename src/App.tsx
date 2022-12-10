@@ -23,14 +23,14 @@ const comments = [
     id: 1,
     content: 'great!',
     author,
-    kudosCount: 10,
+    likesCount: 10,
     publishedAt: new Date('2022-05-04 20:00:00'),
   },
   {
     id: 2,
     content: 'awesome!',
     author,
-    kudosCount: 10,
+    likesCount: 10,
     publishedAt: new Date('2022-05-04 22:00:00'),
   }
 ]

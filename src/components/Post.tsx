@@ -24,7 +24,7 @@ interface PostProps {
       role: string
     }
     content: string
-    kudosCount: number
+    likesCount: number
     publishedAt: Date
   }>
 }

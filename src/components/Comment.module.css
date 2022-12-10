@@ -64,7 +64,7 @@
   margin-top: 1rem;
 }
 
-.kudosButton {
+.likeButton {
   background: transparent;
   border: 0;
   color: var(--gray-400);
@@ -78,15 +78,15 @@
   transition: color 0.1s;
 }
 
-.kudosButton:hover {
+.likeButton:hover {
   color: var(--green-300);
 }
 
-.kudosButton svg {
+.likeButton svg {
   margin-right: 0.5rem;
 }
 
-.kudosButton span::before {
+.likeButton span::before {
   content: "\2022";
   padding: 0 0.25rem;
 }
