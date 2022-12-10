@@ -27,7 +27,7 @@ export function Comment({
   const [localLikesCount, setLocalLikesCount] = useState(likesCount);
 
   function handleLikeComment() {
-    setLocalLikesCount(localLikesCount + 1);
+    setLocalLikesCount(existentsLike => existentsLike + 1);
   }
 
   function handleDeleteComment() {
