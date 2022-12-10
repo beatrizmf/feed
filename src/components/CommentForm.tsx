@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-import styles from "./CommentForm.module.css";
+import styles from './CommentForm.module.css'
 
 interface CommentFormProps {
-  onCommentCreate: (comment: string) => void;
+  onCreateComment: (comment: string) => void;
 }
 
-export function CommentForm({ onCommentCreate }: CommentFormProps) {
+export function CommentForm({ onCreateComment }: CommentFormProps) {
   const [newCommentText, setNewCommentText] = useState('');
 
   function handleNewCommentChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -15,7 +15,7 @@ export function CommentForm({ onCommentCreate }: CommentFormProps) {
 
   function handleCrateNewComment(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    onCommentCreate(newCommentText)
+    onCreateComment(newCommentText)
     setNewCommentText('');
   }
 

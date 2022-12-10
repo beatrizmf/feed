@@ -4,17 +4,27 @@ import { ThumbsUp, Trash } from 'phosphor-react'
 import { Avatar } from './Avatar'
 
 interface CommentProps {
-  author: {
-    avatarUrl: string
-    name: string
-    role: string
+  comment: {
+    id: number
+    author: {
+      avatarUrl: string
+      name: string
+      role: string
+    }
+    content: string
+    kudosCount: number
+    publishedAt: Date
   }
-  content: string
-  kudosCount: number
-  publishedAt: Date
+  onDeleteComment: (commentId: number) => void
 }
 
-export function Comment({ author, content, kudosCount, publishedAt }: CommentProps) {
+export function Comment({
+  comment: { id, author, content, kudosCount },
+  onDeleteComment
+}: CommentProps) {
+  function handleDeleteComment() {
+    onDeleteComment(id);
+  }
 
   return (
     <div className={styles.comment}>
@@ -32,7 +42,10 @@ export function Comment({ author, content, kudosCount, publishedAt }: CommentPro
               <time title="11 de Maio às 08:13h" dateTime="2022-05-11 08:13:00">Cerca de 1h atrás</time>
             </div>
 
-            <button className={styles.deleteCommentButton} title="Delete comment">
+            <button
+              onClick={handleDeleteComment}
+              className={styles.deleteCommentButton}
+              title="Delete comment">
               <Trash size={24} />
             </button>
           </header>
