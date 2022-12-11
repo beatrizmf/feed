@@ -1,17 +1,17 @@
 import { format, formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import locale from 'date-fns/locale/en-US'
 
 interface RelativeTimeToNowProps {
   fromDate: Date
 }
 
 export function RelativeTimeToNow ({ fromDate }: RelativeTimeToNowProps) {
-  const dateExtendedFormat = format(fromDate, "d 'de' LLLL 'às' HH:mm'h'", {
-    locale: ptBR
+  const dateExtendedFormat = format(fromDate, "MM/dd/yyyy HH:mm 'o''clock'", {
+    locale
   })
 
   const relativeDateToNow = formatDistanceToNow(fromDate, {
-    locale: ptBR,
+    locale,
     addSuffix: true
   })
 

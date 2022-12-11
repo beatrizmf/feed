@@ -18,9 +18,9 @@ const author = {
 }
 
 const content: Content[] = [
-  { type: 'paragraph', content: 'Fala galera 👋' },
-  { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
-  { type: 'link', content: 'jane.design/doctorcare' }
+  { type: 'paragraph', content: 'Hello everybody 👋' },
+  { type: 'paragraph', content: 'I just uploaded another project to my portfolio. It is a responsive feed with posts, comment and likes . The name of the project is Feed. 🚀' },
+  { type: 'link', content: 'https://github.com/beatrizmf/feed' }
 ]
 
 const comments = [
@@ -35,7 +35,7 @@ const comments = [
     id: 2,
     content: 'awesome!',
     author,
-    likesCount: 10,
+    likesCount: 8,
     publishedAt: new Date('2022-09-04 22:00:00')
   }
 ]
