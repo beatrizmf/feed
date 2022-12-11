@@ -5,18 +5,22 @@ import { Avatar } from './Avatar'
 
 import styles from './Comment.module.css'
 
+interface Author {
+  avatarUrl: string
+  name: string
+  role: string
+}
+
+interface Comment {
+  id: number
+  author: Author
+  content: string
+  likesCount: number
+  publishedAt: Date
+}
+
 interface CommentProps {
-  comment: {
-    id: number
-    author: {
-      avatarUrl: string
-      name: string
-      role: string
-    }
-    content: string
-    likesCount: number
-    publishedAt: Date
-  }
+  comment: Comment
   onDeleteComment: (commentId: number) => void
 }
 

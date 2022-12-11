@@ -6,13 +6,18 @@ import styles from './App.module.css'
 import './global.css'
 import { Post } from './components/Post'
 
+interface Content {
+  type: 'paragraph' | 'link';
+  content: string;
+}
+
 const author = {
   avatarUrl: 'https://github.com/beatrizmf.png',
   name: 'Beatriz Felix',
   role: 'Software Engineer'
 }
 
-const content = [
+const content: Content[] = [
   { type: 'paragraph', content: 'Fala galera 👋' },
   { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
   { type: 'link', content: 'jane.design/doctorcare' },

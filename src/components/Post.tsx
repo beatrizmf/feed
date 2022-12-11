@@ -8,25 +8,34 @@ import { Comment } from './Comment'
 import styles from './Post.module.css'
 import { CommentForm } from './CommentForm'
 
-interface PostProps {
-  content: Array<{ type: string; content: string; }>
+interface Author {
+  name: string;
+  role: string;
+  avatarUrl: string;
+}
+
+interface Content {
+  type: 'paragraph' | 'link';
+  content: string;
+}
+
+interface CommentInterface {
+  id: number
   author: {
     avatarUrl: string
     name: string
     role: string
-  };
+  }
+  content: string
+  likesCount: number
+  publishedAt: Date
+}
+
+interface PostProps {
+  author: Author;
+  content: Content[];
   publishedAt: Date;
-  comments: Array<{
-    id: number
-    author: {
-      avatarUrl: string
-      name: string
-      role: string
-    }
-    content: string
-    likesCount: number
-    publishedAt: Date
-  }>
+  comments: CommentInterface[]
 }
 
 export function Post({ content, author, comments, publishedAt }: PostProps) {
@@ -34,12 +43,12 @@ export function Post({ content, author, comments, publishedAt }: PostProps) {
 
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
-  });
+  })
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR,
     addSuffix: true
-  });
+  })
 
   function createComment(newCommentText: string) {
     setLocalComments(existentsComments =>

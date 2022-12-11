@@ -3,28 +3,28 @@ import { useState } from 'react'
 import styles from './CommentForm.module.css'
 
 interface CommentFormProps {
-  onCreateComment: (comment: string) => void;
+  onCreateComment: (comment: string) => void
 }
 
 export function CommentForm({ onCreateComment }: CommentFormProps) {
-  const [newCommentText, setNewCommentText] = useState('');
+  const [newCommentText, setNewCommentText] = useState('')
 
   function handleNewCommentChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    e.target.setCustomValidity('');
-    setNewCommentText(e.target.value);
+    e.target.setCustomValidity('')
+    setNewCommentText(e.target.value)
   }
 
-  function handleNewCommentInvalid(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    e.target.setCustomValidity('Enter your reply');
+  function handleNewCommentInvalid(e: React.InvalidEvent<HTMLTextAreaElement>) {
+    e.target.setCustomValidity('Enter your reply')
   }
 
   function handleCrateNewComment(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     onCreateComment(newCommentText)
-    setNewCommentText('');
+    setNewCommentText('')
   }
 
-  const isNewCommentEmpty = newCommentText.length === 0;
+  const isNewCommentEmpty = newCommentText.length === 0
 
   return (
     <form onSubmit={handleCrateNewComment} className={styles.commentForm}>
