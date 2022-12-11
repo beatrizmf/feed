@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { ThumbsUp, Trash } from 'phosphor-react'
 
 import { Avatar } from './Avatar'
+import { RelativeTimeToNow } from './RelativeTimeToNow'
 
 import styles from './Comment.module.css'
 
@@ -26,7 +27,7 @@ interface CommentProps {
 }
 
 export function Comment ({
-  comment: { id, author, content, likesCount },
+  comment: { id, author, content, likesCount, publishedAt },
   onDeleteComment
 }: CommentProps) {
   const [localLikesCount, setLocalLikesCount] = useState(likesCount)
@@ -52,7 +53,7 @@ export function Comment ({
           <header>
             <div className={styles.authorAndTime}>
               <strong>{author.name}</strong>
-              <time title="11 de Maio às 08:13h" dateTime="2022-05-11 08:13:00">Cerca de 1h atrás</time>
+              <RelativeTimeToNow fromDate={publishedAt} />
             </div>
 
             <button

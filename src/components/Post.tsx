@@ -1,11 +1,9 @@
 import { useState } from 'react'
 
-import { format, formatDistanceToNow } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
-
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import { CommentForm } from './CommentForm'
+import { RelativeTimeToNow } from './RelativeTimeToNow'
 
 import styles from './Post.module.css'
 
@@ -42,15 +40,6 @@ interface PostProps {
 export function Post ({ content, author, comments, publishedAt }: PostProps) {
   const [localComments, setLocalComments] = useState(comments)
 
-  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
-    locale: ptBR
-  })
-
-  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
-    locale: ptBR,
-    addSuffix: true
-  })
-
   function createComment (newCommentText: string) {
     setLocalComments(existentsComments =>
       [
@@ -58,7 +47,8 @@ export function Post ({ content, author, comments, publishedAt }: PostProps) {
         {
           ...existentsComments[0],
           id: Math.random(),
-          content: newCommentText
+          content: newCommentText,
+          publishedAt: new Date()
         }
       ]
     )
@@ -86,9 +76,7 @@ export function Post ({ content, author, comments, publishedAt }: PostProps) {
           </div>
         </div>
 
-        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>
-          {publishedDateRelativeToNow}
-        </time>
+       <RelativeTimeToNow fromDate={publishedAt} />
       </header>
 
       <div className={styles.content}>

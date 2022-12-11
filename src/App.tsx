@@ -29,14 +29,14 @@ const comments = [
     content: 'great!',
     author,
     likesCount: 10,
-    publishedAt: new Date('2022-05-04 20:00:00')
+    publishedAt: new Date('2022-06-04 20:00:00')
   },
   {
     id: 2,
     content: 'awesome!',
     author,
     likesCount: 10,
-    publishedAt: new Date('2022-05-04 22:00:00')
+    publishedAt: new Date('2022-09-04 22:00:00')
   }
 ]
 
