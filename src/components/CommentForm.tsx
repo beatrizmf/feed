@@ -6,19 +6,19 @@ interface CommentFormProps {
   onCreateComment: (comment: string) => void
 }
 
-export function CommentForm({ onCreateComment }: CommentFormProps) {
+export function CommentForm ({ onCreateComment }: CommentFormProps) {
   const [newCommentText, setNewCommentText] = useState('')
 
-  function handleNewCommentChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+  function handleNewCommentChange (e: React.ChangeEvent<HTMLTextAreaElement>) {
     e.target.setCustomValidity('')
     setNewCommentText(e.target.value)
   }
 
-  function handleNewCommentInvalid(e: React.InvalidEvent<HTMLTextAreaElement>) {
+  function handleNewCommentInvalid (e: React.InvalidEvent<HTMLTextAreaElement>) {
     e.target.setCustomValidity('Enter your reply')
   }
 
-  function handleCrateNewComment(e: React.FormEvent<HTMLFormElement>) {
+  function handleCrateNewComment (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     onCreateComment(newCommentText)
     setNewCommentText('')

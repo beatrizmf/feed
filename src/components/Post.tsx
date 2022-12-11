@@ -1,22 +1,23 @@
 import { useState } from 'react'
+
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
-
-import styles from './Post.module.css'
 import { CommentForm } from './CommentForm'
 
+import styles from './Post.module.css'
+
 interface Author {
-  name: string;
-  role: string;
-  avatarUrl: string;
+  name: string
+  role: string
+  avatarUrl: string
 }
 
 interface Content {
-  type: 'paragraph' | 'link';
-  content: string;
+  type: 'paragraph' | 'link'
+  content: string
 }
 
 interface CommentInterface {
@@ -32,17 +33,17 @@ interface CommentInterface {
 }
 
 interface PostProps {
-  author: Author;
-  content: Content[];
-  publishedAt: Date;
+  author: Author
+  content: Content[]
+  publishedAt: Date
   comments: CommentInterface[]
 }
 
-export function Post({ content, author, comments, publishedAt }: PostProps) {
+export function Post ({ content, author, comments, publishedAt }: PostProps) {
   const [localComments, setLocalComments] = useState(comments)
 
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
-    locale: ptBR,
+    locale: ptBR
   })
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
@@ -50,7 +51,7 @@ export function Post({ content, author, comments, publishedAt }: PostProps) {
     addSuffix: true
   })
 
-  function createComment(newCommentText: string) {
+  function createComment (newCommentText: string) {
     setLocalComments(existentsComments =>
       [
         ...existentsComments,
@@ -63,7 +64,7 @@ export function Post({ content, author, comments, publishedAt }: PostProps) {
     )
   }
 
-  function deleteComment(commentId: number) {
+  function deleteComment (commentId: number) {
     setLocalComments(existentsComments =>
       existentsComments.filter(comment => comment.id !== commentId)
     )
@@ -93,10 +94,12 @@ export function Post({ content, author, comments, publishedAt }: PostProps) {
       <div className={styles.content}>
         {content.map(line => {
           if (line.type === 'paragraph') {
-            return <p key={line.content}>{line.content}</p>;
+            return <p key={line.content}>{line.content}</p>
           } else if (line.type === 'link') {
             return <p key={line.content}><a href="#">{line.content}</a></p>
           }
+
+          return null
         })}
       </div>
 

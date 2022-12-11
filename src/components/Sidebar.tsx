@@ -1,9 +1,10 @@
 import { PencilLine } from 'phosphor-react'
+
 import { Avatar } from './Avatar'
 
 import styles from './Sidebar.module.css'
 
-export function Sidebar() {
+export function Sidebar () {
   return (
     <aside className={styles.sidebar}>
       <img

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { ThumbsUp, Trash } from 'phosphor-react'
+
 import { Avatar } from './Avatar'
 
 import styles from './Comment.module.css'
@@ -11,7 +12,7 @@ interface Author {
   role: string
 }
 
-interface Comment {
+interface CommentInterface {
   id: number
   author: Author
   content: string
@@ -20,22 +21,22 @@ interface Comment {
 }
 
 interface CommentProps {
-  comment: Comment
+  comment: CommentInterface
   onDeleteComment: (commentId: number) => void
 }
 
-export function Comment({
+export function Comment ({
   comment: { id, author, content, likesCount },
   onDeleteComment
 }: CommentProps) {
-  const [localLikesCount, setLocalLikesCount] = useState(likesCount);
+  const [localLikesCount, setLocalLikesCount] = useState(likesCount)
 
-  function handleLikeComment() {
-    setLocalLikesCount(existentsLike => existentsLike + 1);
+  function handleLikeComment () {
+    setLocalLikesCount(existentsLike => existentsLike + 1)
   }
 
-  function handleDeleteComment() {
-    onDeleteComment(id);
+  function handleDeleteComment () {
+    onDeleteComment(id)
   }
 
   return (
